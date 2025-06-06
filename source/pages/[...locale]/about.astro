@@ -1,0 +1,38 @@
+---
+import type { GetStaticPaths } from "astro";
+import Base from "../../layouts/Base.astro";
+import { getCollection } from "astro:content";
+import { getEntry } from "astro:content";
+
+import { locales } from "../../utils/i18n.config";
+
+import { animate } from "motion";
+
+// генерация статического пути из динамеческого (два  языка)
+export function getStaticPaths() {
+  const paths = locales.map((locale) => {
+    return { params: { locale } };
+  });
+  return paths;
+}
+const locale = Astro.currentLocale;
+
+// загрузка конкретной страницы из коллекции, получение контента и данных из конкретной страницы коллекции
+const slug = "about";
+const page = await getEntry("pages", `${locale}/${slug}`);
+// проверка на наличие страницы
+if (!page) {
+  return Astro.redirect("/404");
+}
+// загрузка конента
+const { Content } = await page.render();
+// <h1>{page.data.title}</h1> - пример получения отдельных данных
+---
+
+<Base title="About">
+  <h1>About</h1>
+  <pre>Locale: {locale}</pre>
+  <h1>{page.data.title}</h1>
+
+  <Content />
+</Base>

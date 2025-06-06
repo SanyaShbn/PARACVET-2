@@ -1,0 +1,27 @@
+---
+import { locales } from "../../utils/i18n.config";
+// получаем часть адреса относящегося к текущему файлу, почему то у ебучей Астры этого нет
+const Path = Astro.url.pathname;
+const PageSlug = Path.slice(4); // Удаляем первые 4 символа
+const locale = Astro.currentLocale;
+
+const {css} = Astro.props;
+
+
+---
+
+<div  class:list={css}>
+  <ul class="inline-block ml-[-2rem]">
+    {locales.map((item) => (
+        <li
+          class="ml-1 inline-block rounded-full pb-1 pl-3 pr-3 pt-1 text-xs font-semibold uppercase text-neutral-950  "
+          class:list={[
+            locale === item ? ["text-slate-100", "bg-neutral-950"] : "",
+          ]}
+        >
+          <a href={`/${item}/${PageSlug}`}>{item}</a>
+        </li>
+      ))
+    }
+  </ul>
+</div>

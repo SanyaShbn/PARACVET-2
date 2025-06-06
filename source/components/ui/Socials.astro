@@ -1,0 +1,17 @@
+---
+import Socials from "../../data/Socials.yml";
+const locale: string = Astro.currentLocale as string;
+const {css} = Astro.props;
+---
+<div class:list={css}>
+<ul>{Socials[locale].map((item) =>
+    
+    <li>
+        <a href={item.link} class="text-xs uppercase  font-medium tracking-wide flex flex-row pr-8 "> 
+         <span class="size-5  pr-1 ">  <Fragment set:html={item.icon}/> </span>{item.name}</a>
+    </li>
+
+
+)}</ul>
+
+</div>

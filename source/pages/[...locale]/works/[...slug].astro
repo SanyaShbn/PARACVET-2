@@ -1,0 +1,28 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from 'astro:content';
+import Base from "../../../layouts/Base.astro";
+
+export async function getStaticPaths() {
+  const works = await getCollection("works");
+
+  const paths = works.map((entry) => {
+    const [locale, ...slug] = entry.slug.split("/");
+    return { params: { locale, slug: slug.join("/") || undefined }, props: entry };
+  });
+
+  return paths;
+}
+
+const works = Astro.props;
+// const formattedDate = page.data.date.toLocaleString(lang);
+
+const { Content } = await works.render();
+
+---
+
+<Base title="Works">
+    <h1>{works.data.title}</h1>
+	 <Content />
+	
+</Base>

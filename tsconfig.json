@@ -1,0 +1,13 @@
+{
+  "extends": "astro/tsconfigs/base",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "strictNullChecks": true,
+    "allowJs": true,
+    "jsxImportSource": "react"
+  },
+  "rules": {
+    "import-blacklist": [true, ".yml"]
+  },  
+  
+}

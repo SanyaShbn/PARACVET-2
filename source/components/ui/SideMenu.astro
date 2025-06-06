@@ -1,0 +1,211 @@
+---
+import navigation from "../../data/Navigation";
+import Socials from "./Socials.astro";
+
+const locale: string = Astro.currentLocale as string;
+
+const Path = Astro.url.pathname;
+const PageSlug = Path.slice(4);
+let home;
+if (locale === "ru") {
+  home = "Главная";
+} else {
+  home = "Home";
+}
+---
+
+<button
+  id="menu-btn"
+  class="grid-col-start-7 fixed right-3 top-8 z-50 justify-self-end"
+>
+  <span
+    class="menu-btn-1 relative mb-2 block h-[2px] w-[48px] rounded-full bg-slate-950"
+  ></span>
+  <span
+    class="menu-btn-2 relative mb-1 block h-[2px] w-[48px] rounded-full bg-slate-950"
+  ></span>
+</button>
+<div
+  id="menu"
+  class="fixed right-0 top-0 z-40
+ min-h-full w-[400px] bg-white p-3"
+>
+  <div class="w-10">
+    <svg viewBox="0 0 55 33" fill="none">
+      <path
+        d="M16.1779 32.3559C25.1128 32.3559 32.3559 25.1128 32.3559 16.1779C32.3559 7.24311 25.1128 0 16.1779 0C7.24311 0 0 7.24311 0 16.1779C0 25.1128 7.24311 32.3559 16.1779 32.3559Z"
+        fill="#211F1F"></path>
+      <path
+        d="M34.3841 16.178C34.3841 21.1334 32.4182 25.6296 29.2237 28.9293C31.9237 30.9939 35.2986 32.2205 38.9599 32.2205C47.8201 32.2205 55.0027 25.0379 55.0027 16.1778C55.0027 7.3176 47.8201 0.135027 38.9599 0.135027C35.2985 0.135027 31.9235 1.36164 29.2235 3.42637C32.4181 6.7261 34.3841 11.2224 34.3841 16.178Z"
+        fill="#211F1F"></path>
+    </svg>
+  </div>
+  <div class="sidemenu__title pb-8 pt-16 text-sm uppercase">
+    <p>Andrew Zamkovenko. Multidesciplinary designer, artdirector, Projector</p>
+  </div>
+  <nav class="menu__nav pt-10 text-5xl">
+    <ul>
+      <li>
+        <a href={`/${locale}/`} class="block">{home}</a>
+      </li>
+      {
+        Object.entries(navigation[locale]).map(([key, item]) => (
+          <li
+            class:list={[
+              PageSlug === key + "/" || PageSlug === key + "/"
+                ? ["", "text-grey-900"]
+                : "",
+            ]}
+          >
+            <a href={`/${locale}/${key}/`} class="block ">
+              {item}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+
+  <div>
+    <Socials css="saidebar__socials" />
+  </div>
+</div>
+
+<script>
+  import { stagger, timeline } from "motion";
+
+  document.addEventListener("astro:page-load", () => {
+    const burgerBtn = document.getElementById("menu-btn");
+    const sidebar = document.getElementById("menu");
+    const navitems = document.querySelectorAll(".menu__nav li");
+
+    // Button animation
+    const btnAnimOpen = [
+      [
+        ".menu-btn-1",
+        {
+          transform: ["rotate(0deg)", "rotate(135deg)"],
+          x: [0, 20],
+          // y: [0, 20],
+        },
+        { duration: 0.8, easing: [0.25, 1, 0.5, 1] },
+      ],
+      [
+        ".menu-btn-2",
+        {
+          transform: ["rotate(0deg)", "rotate(-135deg)"],
+          x: [0, -20],
+          // y: [0, -20],
+        },
+        { duration: 0.8, at: "<", easing: [0.25, 1, 0.5, 1] },
+      ],
+    ];
+
+    const btnAnimClose = [
+      [
+        ".menu-btn-1",
+        {
+          transform: ["rotate(135deg)", "rotate(0deg)"],
+          x: [0, 20],
+          // y: [0, 20],
+        },
+        { duration: 0.4, easing: [0.25, 1, 0.5, 1] },
+      ],
+      [
+        ".menu-btn-2",
+        {
+          transform: ["rotate(-135deg)", "rotate(0deg)"],
+          x: [0, -20],
+          // y: [0, -20],
+        },
+        { duration: 0.4, at: "<", easing: [0.25, 1, 0.5, 1] },
+      ],
+    ];
+    // Side bar animation
+
+    const sideBarWidth = 500;
+
+    const sideBarAnimOpen = [
+      [
+        "#menu.open",
+        { x: [sideBarWidth, 0] },
+        { duration: 0.8, easing: [0.25, 1, 0.5, 1] },
+      ],
+      [
+        ".menu__nav li",
+        { opacity: [0, 1], x: [200, 0] },
+        {
+          duration: 0.6,
+          at: 0.01,
+          easing: [0.25, 1, 0.5, 1],
+          delay: stagger(0.06, { from: "first" }),
+        },
+      ],
+      [
+        ".saidebar__socials li",
+        { opacity: [0, 1], x: [200, 0] },
+        {
+          duration: 0.6,
+          at: 0.08,
+          easing: [0.25, 1, 0.5, 1],
+          delay: stagger(0.06, { from: "first" }),
+        },
+      ],
+    ];
+
+    const sideBarAnimClose = [
+      [
+        ".saidebar__socials li",
+        { opacity: [1, 0], x: [0, 100] },
+        {
+          duration: 0.4,
+          // at: 0.07,
+          easing: [0.25, 1, 0.5, 1],
+          delay: stagger(0.06, { from: "last" }),
+        },
+      ],
+      [
+        ".menu__nav li",
+        { opacity: [1, 0], x: [0, 100] },
+        {
+          duration: 0.4,
+          at: 0.02,
+          easing: [0.25, 1, 0.5, 1],
+          delay: stagger(0.06, { from: "last" }),
+        },
+      ],
+      [
+        "#menu",
+        { x: [0, sideBarWidth] },
+        {
+          duration: 0.8,
+          at: 0.01,
+          easing: [0.25, 1, 0.5, 1],
+        },
+      ],
+    ];
+
+    burgerBtn.addEventListener("click", () => {
+      menu.classList.toggle("open");
+      console.log();
+      if (sidebar.classList.contains("open")) {
+        console.log("open");
+        timeline(sideBarAnimOpen, { direction: "normal" });
+        timeline(btnAnimOpen, { direction: "normal" });
+      } else {
+        console.log("close");
+        timeline(sideBarAnimClose, { direction: "normal" });
+        timeline(btnAnimClose, { direction: "normal" });
+      }
+    });
+  });
+</script>
+<style>
+  /* #menu {
+  display: none;
+}
+
+#menu.open {
+  display: block;
+} */
+</style>

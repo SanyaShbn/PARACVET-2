@@ -1,0 +1,30 @@
+---
+title: Project Title
+
+description: Project description
+
+categories:
+- all
+- ui
+- web
+- mobile app
+
+team:
+- person: 
+    name: Person Name
+    role: Person role
+- person: 
+    name: Person Name
+    role: Illustrator
+
+client:
+    name: Client Name
+    description: Client description
+
+SEO:
+- description: seo description
+- keywords: seo keywords
+
+
+
+---

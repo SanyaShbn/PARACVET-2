@@ -1,0 +1,29 @@
+<!-- <meta http-equiv="refresh" content="0;url=/en/" /> -->
+<html>
+  <title>Redirecting to: https://zamkovenko.design/en/</title>
+  <meta name="robots" content="noindex" />
+  <link rel="canonical" href="https://zamkovenko.design/en/" />
+
+  <script is:inline>
+    // Redirect your homepage to the first page of documentation.
+    // If you have a landing page, remove this script and add it here!
+    const supportedLanguages = { ru: "ru", en: "en" };
+    const fallbackLanguage = "en";
+
+    // Check if the users browser language is a supported language of the website. Otherwise go to fallback.
+    const language =
+      supportedLanguages[
+        (navigator.language || navigator.userLanguage).substring(0, 2)
+      ] || fallbackLanguage;
+
+    // Go to the language version of your website. Example: https://domain.com/en/
+    // location.replace("/" + language + "/");
+
+    // window.location.pathname = `/en/`;
+    window.location.pathname = "/" + language;
+  </script>
+
+
+
+  <body> </body>
+</html>
