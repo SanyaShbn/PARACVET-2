@@ -26,5 +26,12 @@ export default defineMarkdocConfig({
         
       },
     },
+    HeroText: {
+      render: component('./source/components/sections/main/HeroText.astro'),
+      attributes: {
+        text: { type: String },
+        
+      },
+    },
   },
 });
