@@ -5,25 +5,26 @@ const locale: string = Astro.currentLocale as string;
 const Path = Astro.url.pathname;
 const PageSlug = Path.slice(4);
 
-const {css} = Astro.props;
-
+const { css } = Astro.props;
 ---
 
 <nav class:list={css}>
-  <ul>
+  <ul class="w-full space-y-[14px] text-right">
     {
       Object.entries(navigation[locale]).map(([item, name]) => (
-        <li
-          class="mr-2 inline-block text-sm uppercase"
-          class:list={[PageSlug === (item + "/") || PageSlug === name + "/" ? ["font-bold", "text-neutral-950"]: "" ]}>
-          <a href={`/${locale}/${item}/`}>{name}</a>
-        </li>
+       <li class="text-sm uppercase relative">
+        <a href={`/${locale}/${item}/`} 
+           class:list={[
+             PageSlug === (item + "/") || PageSlug === name + "/" 
+             ? ["font-bold", "text-neutral-950", "border-b-[2px] border-black w-fit"]
+             : ""
+           ]}>
+          {name}
+        </a>
+      </li>
       ))
     }
   </ul>
 </nav>
 
-<script>
- 
-
-</script>
+<script></script>

@@ -1,0 +1,31 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getEntry } from "astro:content";
+
+import { locales } from "../../utils/i18n.config";
+
+export function getStaticPaths() {
+  const paths = locales.map((locale) => {
+    return { params: { locale } };
+  });
+  return paths;
+}
+const locale = Astro.currentLocale;
+
+const slug = "services";
+const page = await getEntry("pages", `${locale}/${slug}`);
+
+if (!page) {
+  return Astro.redirect("/404");
+}
+
+const { Content } = await page.render();
+---
+
+<Base title="Services">
+  <h1>Services</h1>
+  <pre>Locale: {locale}</pre>
+  <h1>{page.data.title}</h1>
+
+  <Content />
+</Base>

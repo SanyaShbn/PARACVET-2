@@ -22,6 +22,7 @@ interface Props {
 const { title } = Astro.props;
 ---
 
+<!-- Base пока будет layout-ом для Работ, Услуг, О компании и Методологии, для главной страницы - отдельный layout Main -->
 <html lang={locale}>
   <head>
     <meta charset="utf-8" />
@@ -31,8 +32,10 @@ const { title } = Astro.props;
 
     <ViewTransitions />
   </head>
-  <body class="bg-slate-200">
-    <SideMenu />
+  <!-- <body class="bg-slate-200"> -->
+  <body class="bg-white"> 
+
+    <!-- <SideMenu /> -->
 
     <Header />
 
@@ -49,82 +52,94 @@ const { title } = Astro.props;
     </div>
 
     <script src="../scripts/global.js"></script>
-  </body><style is:global>
-    /* Tilewinds settings	 */
-    @tailwind base;
-    /* @tailwind components;
+    <style is:global>
+      /* Tilewinds settings	 */
+      @tailwind base;
+      /* @tailwind components;
   @tailwind utilities; */
 
-    @layer base {
-      @font-face {
-        font-family: "Manrope";
-        font-style: normal;
-        font-weight: 400;
-        font-display: swap;
-        src: url(../../public/fonts/Manrope/regular.woff2) format("woff2");
+      @layer base {
+        @font-face {
+          font-family: "Manrope";
+          font-style: normal;
+          font-weight: 400;
+          font-display: swap;
+          src: url(../../public/fonts/Manrope/regular.woff2) format("woff2");
+        }
+        @font-face {
+          font-family: "Manrope";
+          font-style: bold;
+          font-weight: 800;
+          font-display: swap;
+          src: url(../../public/fonts/Manrope/bold.woff2) format("woff2");
+        }
+        @font-face {
+          font-family: "Manrope";
+          font-style: medium;
+          font-weight: 600;
+          font-display: swap;
+          src: url(../../public/fonts/Manrope/medium.woff2) format("woff2");
+        }
+        @font-face {
+          font-family: "Golos Text";
+          font-style: normal;
+          font-weight: 400;
+          font-display: swap;
+          src: url(../../public/fonts/GolosText/regular.woff2) format("woff2");
+        }
       }
-      @font-face {
-        font-family: "Manrope";
-        font-style: bold;
-        font-weight: 800;
-        font-display: swap;
-        src: url(../../public/fonts/Manrope/bold.woff2) format("woff2");
+
+      .font-golos {
+        font-family: "Golos Text", sans-serif;
       }
-      @font-face {
-        font-family: "Manrope";
-        font-style: medium;
-        font-weight: 600;
-        font-display: swap;
-        src: url(../../public/fonts/Manrope/medium.woff2) format("woff2");
+
+      /* locomotive scroll */
+      html.lenis {
+        height: auto;
       }
-    }
 
-    /* locomotive scroll */
-    html.lenis {
-      height: auto;
-    }
+      .lenis.lenis-smooth {
+        scroll-behavior: auto;
+      }
 
-    .lenis.lenis-smooth {
-      scroll-behavior: auto;
-    }
+      .lenis.lenis-smooth [data-lenis-prevent] {
+        overscroll-behavior: contain;
+      }
 
-    .lenis.lenis-smooth [data-lenis-prevent] {
-      overscroll-behavior: contain;
-    }
+      .lenis.lenis-stopped {
+        overflow: hidden;
+      }
 
-    .lenis.lenis-stopped {
-      overflow: hidden;
-    }
+      .lenis.lenis-scrolling iframe {
+        pointer-events: none;
+      }
 
-    .lenis.lenis-scrolling iframe {
-      pointer-events: none;
-    }
+      .wrapper {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        min-height: 100vh;
+      }
 
-    .wrapper {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      width: 100%;
-      min-height: 100vh;
-    }
+      /* srolbar styling */
+      body::-webkit-scrollbar {
+        width: 0.3em;
+      }
+      body::-webkit-scrollbar {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
 
-    /* srolbar styling */
-    body::-webkit-scrollbar {
-      width: 0.3em;
-    }
-    body::-webkit-scrollbar {
-      background-color: rgba(0, 0, 0, 0.1);
-    }
+      body::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.1);
+        /* background-color:  rgba(0, 0, 0, 0.2); */
+      }
 
-    body::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.1);
-      /* background-color:  rgba(0, 0, 0, 0.2); */
-    }
-
-    body::-webkit-scrollbar-thumb {
-      background-color: rgba(3, 3, 3, 0.7);
-      outline: none;
-      height: 5em;
-    }
-  </style>
+      body::-webkit-scrollbar-thumb {
+        background-color: rgba(3, 3, 3, 0.7);
+        outline: none;
+        height: 5em;
+      }
+    </style>
+  </body>
 </html>
