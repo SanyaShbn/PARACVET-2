@@ -7,7 +7,7 @@ const {css} = Astro.props;
 <ul>{Socials[locale].map((item) =>
     
     <li>
-        <a href={item.link} class="text-xs uppercase  font-medium tracking-wide flex flex-row pr-8 "> 
+        <a href={item.link} class="text-xs uppercase font-medium tracking-wide flex flex-row pr-8 "> 
          <span class="size-5  pr-1 ">  <Fragment set:html={item.icon}/> </span>{item.name}</a>
     </li>
 

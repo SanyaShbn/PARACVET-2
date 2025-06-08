@@ -1,0 +1,34 @@
+---
+import CapabilityTitle from "../../typography/services-page-typography/CapabilityTitle.astro";
+import FaqQuestionContent from "../../typography/services-page-typography/FaqQuestionContent.astro";
+
+const { title, question } = Astro.props;
+---
+
+<section class="relative col-span-10 h-screen pt-32">
+
+  <!-- Фон на всю ширину экрана -->
+  <!-- <div class="absolute top-0 w-screen h-full bg-[#F2F2F2] -z-10"></div> -->
+
+  <div class="relative grid grid-cols-10 gap-x-[10px]">
+    <div class="col-span-3">
+      <CapabilityTitle>{title}</CapabilityTitle>
+    </div>
+
+    <div
+      class="col-span-6 col-start-5 gap-x-[10px] pt-[10px] border-b border-[rgba(0,0,0,0.2)]"
+    >
+      {
+        question.map((questionItem) => (
+          <div class="flex flex-row justify-between items-center border-t border-[rgba(0,0,0,0.2)] pb-[36px] pt-[36px]">
+            <FaqQuestionContent>{questionItem}</FaqQuestionContent>
+
+            <button class="pr-[24px]">
+              <img src="/icons/plus.svg" alt="Plus" class="w-[18px] h-[18px]" loading="lazy"/>
+            </button>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

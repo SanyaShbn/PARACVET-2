@@ -16,7 +16,7 @@ const { css } = Astro.props;
         <a href={`/${locale}/${item}/`} 
            class:list={[
              PageSlug === (item + "/") || PageSlug === name + "/" 
-             ? ["font-bold", "text-neutral-950", "border-b-[2px] border-black w-fit"]
+             ? ["font-bold", "text-neutral-950", "border-b-[2px] border-black w-fit opacity-80"]
              : ""
            ]}>
           {name}

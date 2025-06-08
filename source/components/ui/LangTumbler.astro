@@ -14,7 +14,7 @@ const {css} = Astro.props;
   <ul class="inline-block ml-[-2rem]">
     {locales.map((item) => (
         <li
-          class="ml-1 inline-block rounded-full pb-1 pl-3 pr-3 pt-1 text-xs font-semibold uppercase text-neutral-950  "
+          class="ml-1 inline-block rounded-full pb-1 pl-3 pr-3 pt-1 text-xs font-semibold uppercase text-neutral-950 opacity-80 "
           class:list={[
             locale === item ? ["text-slate-100", "bg-neutral-950"] : "",
           ]}

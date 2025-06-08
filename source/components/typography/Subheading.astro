@@ -1,0 +1,20 @@
+---
+const { regular, highlighted } = Astro.props;
+---
+
+<section class="col-span-8 col-start-1 pt-[19px] text-[64px] font-medium leading-[130%] text-[#121315]">
+  <span>{regular}</span>
+  <span class="relative text-[#808080]">
+    {highlighted.map((part) => {
+      const textWithoutPunctuation = part.replace(/\s*[,.!?;:]+$/, "");
+      const punctuation = part.match(/[,.!?;:]+$/) || "";
+
+      return (
+        <span class="inline-block">
+          <span class="underline decoration-[1.5px] underline-offset-[4px]">{textWithoutPunctuation}</span>
+          <span class="absolute ml-[2px]">{punctuation}</span>
+        </span>
+      );
+    })}
+  </span>
+</section>

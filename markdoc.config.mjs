@@ -13,7 +13,7 @@ export default defineMarkdocConfig({
   },
   
   tags: {
-    Textbox: {
+    textbox: {
       render: component('./source/components/sections/TextXXLCenter.astro'),
       attributes: {
         title: { type: String },
@@ -26,11 +26,33 @@ export default defineMarkdocConfig({
         
       },
     },
-    HeroText: {
-      render: component('./source/components/sections/main/HeroText.astro'),
+    h1: {
+      render: component('./source/components/typography/H1.astro'),
       attributes: {
         text: { type: String },
         
+      },
+    },
+    subheading: {
+      render: component('./source/components/typography/Subheading.astro'),
+      attributes: {
+        regular: { type: String },
+        highlighted: { type: Array[String] }
+      },
+    },
+    capabilitySection: {
+      render: component('./source/components/sections/services-page-sections/CapabilitiesSection.astro'),
+      attributes: {
+        title: { type: String },
+        category: { type: Array[String] },
+        description: { type: Array[String] },
+      },
+    },
+    faqSection: {
+      render: component('./source/components/sections/services-page-sections/FaqSection.astro'),
+      attributes: {
+        title: { type: String },
+        question: { type: Array[String] },
       },
     },
   },
