@@ -6,12 +6,12 @@ import CapabilityDescription from "../../typography/services-page-typography/Cap
 const { title, category, description } = Astro.props;
 ---
 
-<section class="grid grid-cols-10 col-span-10 h-screen pt-32 border-t border-[rgba(0,0,0,0.2)]">
+<section class="grid grid-cols-10 col-span-10 px-12 h-screen pt-32 border-t border-[rgba(0,0,0,0.2)]">
   <div class="col-span-3">
     <CapabilityTitle>{title}</CapabilityTitle>
   </div>
 
-  <div class="col-start-5 col-span-5 gap-x-[10px] pt-[10px]">
+  <div class="col-start-5 col-span-5 gap-x-[6px] pt-[10px]">
     {category.map((cat, index) => (
       <div class="flex flex-col pb-[62px] space-y-2">
         <CapabilityCategory>{cat}</CapabilityCategory>

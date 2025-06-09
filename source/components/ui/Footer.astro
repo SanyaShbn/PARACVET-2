@@ -1,10 +1,21 @@
 ---
+import FooterText from "../typography/FooterText.astro";
 import Socials from "./Socials.astro";
-const locale: string = Astro.currentLocale as string;
+import Contacts from "./Contacts.astro";
+import CopyrightText from "../typography/CopyrightText.astro";
 ---
 
-<footer class="h-[561px] bg-[#121315] pt-[200px] pb-[48px] pl-[48px] pr-[12px]">
-  <div>
-    <Socials css="" />
+<footer class="mb-[15px] pt-[200px] pb-[48px] pl-[48px] pr-[12px] bg-[#121315]">
+  <div class="grid grid-cols-10 mx-[12px] gap-x-[6px] gap-y-[47px]">
+    <FooterText/>
+
+    <div class="col-span-10 grid grid-cols-10">
+      <button>
+        <img src="/icons/footer-nav-icon.svg" alt="Footer nav icon" class="col-span-1 col-start-1" loading="lazy"/>
+      </button>
+      <Contacts css="col-span-2 col-start-5"/>
+      <Socials css="col-span-2 col-start-7 flex items-center justify-self-center"/>
+      <CopyrightText css="col-span-1 col-start-10 flex items-end justify-self-end"/>
+    </div>
   </div>
 </footer>

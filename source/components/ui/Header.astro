@@ -4,13 +4,13 @@ import Navigation from "../ui/Navigation.astro";
 import Logo from "./Logo.astro";
 ---
 
-<header class="grid h-[188px] w-full grid-cols-10 content-center gap-[10px] px-[12px]">
+<header class="grid h-[188px] w-full grid-cols-10 content-center gap-x-[6px] px-[12px]">
   <Logo css="col-start-1 w-[168px] h-[28px]" />
-   <div class="col-start-4 w-fit text-[18px] font-normal text-neutral-950 justify-self-end font-golos opacity-80">
+   <div class="col-start-5 w-fit text-[18px] font-normal text-neutral-950 justify-self-end font-golos opacity-80">
     <a href="/contact" class="inline-block border-b-[2px] border-black">
       Lets Talk
     </a>
   </div>
-  <LangTumbler css="col-start-7 col-span-3 justify-self-start" />
+  <LangTumbler css="col-start-8 col-span-1 justify-self-center" />
   <Navigation css="col-start-10 col-span-6 flex flex-col items-end" />
 </header>

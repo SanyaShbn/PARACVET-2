@@ -1,0 +1,19 @@
+---
+const streetAddress = {
+  en: `54 Rotmistrova, 
+Minsk, Belarus`,
+  ru: `Ротмистрова, дом 54,
+Минск, Беларусь`,
+};
+
+const {css} = Astro.props;
+const locale = Astro.currentLocale ?? "en"; // Если undefined, то по дефолту будет 'en'
+---
+
+<div class:list={css + " text-[16px] font-normal text-white"}>
+  <section>
+    <!-- Пока хардкодим -->
+    contact@paracvet.one 
+  </section>
+  <section class="mt-[19px] whitespace-pre-wrap">{streetAddress[locale]}</section>
+</div>

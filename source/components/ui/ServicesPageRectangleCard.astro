@@ -1,0 +1,44 @@
+---
+import RoundedLabel from "./RoundedLabel.astro";
+
+const labelsArray = {
+  en: [
+    "Early stage",
+    "Product preparation and launch",
+    "Growth stage",
+    "Preparation and launch of the AC",
+  ],
+  ru: [
+    "Ранняя стадия",
+    "Подготовка и запуск продукта",
+    "Стадия роста",
+    "Подготовка и запуск РК",
+  ],
+};
+
+const { css, src, cardTitleText, cardDescriptionText, showLabels = false } = Astro.props;
+const locale = Astro.currentLocale ?? "en";
+---
+
+<div
+  class={css + " gap-x-[6px] pl-[40px] pt-[60px] bg-[#242526] rounded-[18px]"}
+>
+  <div class="col-span-3 space-y-[97px] font-normal text-white">
+    <img src={src} alt="Placeholder icon" loading={"lazy"} />
+    <div class="space-y-[12px]">
+      <p class="text-[40px] leading-[150%] tracking-[-2.2%]">
+        {cardTitleText}
+      </p>
+      <p class="text-[18px] leading-[160%]">
+        {cardDescriptionText}
+      </p>
+    </div>
+  </div>
+  <div class="col-span-5">
+    {showLabels && (
+      <div class="flex flex-wrap gap-x-[10px] gap-y-[11px]">
+        {labelsArray[locale].map((label) => <RoundedLabel>{label}</RoundedLabel>)}
+      </div>
+    )}
+  </div>
+</div>

@@ -40,6 +40,19 @@ export default defineMarkdocConfig({
         highlighted: { type: Array[String] }
       },
     },
+
+    //  Теги для странички "Услуги"
+    cooperationSection: {
+      render: component('./source/components/sections/services-page-sections/CooperationSection.astro'),
+      attributes: {
+        pageTitle: { type: String },
+        cooperationApproachTitle: { type: String },
+        cooperationApproachDescription: { type: String },
+        cardTitleArray: { type: Array[String] },
+        cardDescriptionArray: { type: Array[String] }
+      },
+      group: 'services-page'
+    },
     capabilitySection: {
       render: component('./source/components/sections/services-page-sections/CapabilitiesSection.astro'),
       attributes: {
@@ -47,6 +60,7 @@ export default defineMarkdocConfig({
         category: { type: Array[String] },
         description: { type: Array[String] },
       },
+      group: 'services-page'
     },
     faqSection: {
       render: component('./source/components/sections/services-page-sections/FaqSection.astro'),
@@ -54,6 +68,7 @@ export default defineMarkdocConfig({
         title: { type: String },
         question: { type: Array[String] },
       },
+      group: 'services-page'
     },
   },
 });

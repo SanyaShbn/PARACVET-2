@@ -1,0 +1,83 @@
+---
+import CooperationSectionTitle from "../../typography/services-page-typography/CooperationSectionTitle.astro";
+import CooperationApproachTitle from "../../typography/services-page-typography/CooperationApproachTitle.astro";
+import CooperationApproachDescription from "../../typography/services-page-typography/CooperationApproachDescription.astro";
+import ServicesPageRectangleCard from "../../ui/ServicesPageRectangleCard.astro";
+
+const {
+  pageTitle,
+  cooperationApproachTitle,
+  cooperationApproachDescription,
+  cardTitleArray,
+  cardDescriptionArray,
+} = Astro.props;
+
+const linkText = {
+  en: "How it works",
+  ru: "Как это работает",
+};
+
+const locale = Astro.currentLocale ?? "en";
+---
+
+<section
+  class="col-span-10 grid min-h-[200vh] grid-cols-10 grid-rows-[auto,1fr] pt-32"
+>
+  <div
+    class="col-span-10 grid grid-cols-10 border-t border-[rgba(0,0,0,0.2)] px-12 pt-32"
+  >
+    <div class="col-span-2">
+      <CooperationSectionTitle>{pageTitle}</CooperationSectionTitle>
+    </div>
+
+    <div class="col-span-6 col-start-5 gap-x-[6px] justify-self-center">
+      <div class="flex flex-col space-y-[12px]">
+        <CooperationApproachTitle
+          ><span
+            set:html={cooperationApproachTitle}
+          /></CooperationApproachTitle
+        >
+        <CooperationApproachDescription
+          ><span
+            set:html={cooperationApproachDescription}
+          /></CooperationApproachDescription
+        >
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="relative col-span-10 mt-[10vh] grid h-[658px] grid-cols-10 gap-x-[6px] px-[12px]"
+  >
+    <ServicesPageRectangleCard
+      css="col-start-1 col-span-4 h-[435px] grid grid-cols-4"
+      src="/icons/placeholder-icons/placeholder-A-icon.svg"
+      cardTitleText={cardTitleArray[0]}
+      cardDescriptionText={cardDescriptionArray[0]}
+    />
+    <ServicesPageRectangleCard
+      css="col-start-5 col-span-6 h-[658px] grid grid-cols-6"
+      src="/icons/placeholder-icons/placeholder-B-icon.svg"
+      cardTitleText={cardTitleArray[1]}
+      cardDescriptionText={cardDescriptionArray[1]}
+      showLabels="true"
+    />
+    <button
+      class="absolute bottom-0 col-span-4 flex items-center justify-between px-12 text-[24px] font-medium leading-[160%] tracking-[-2.2%] text-[#121315]"
+    >
+      <span>{linkText[locale]}</span>
+      <img
+        src="/icons/arrow.svg"
+        alt="Arrow icon"
+        class="ml-[12px]"
+      />
+    </button>
+  </div>
+
+  <div
+    class="col-span-4 col-start-1
+  text-[164px] font-medium leading-[124%] tracking-[-2%] text-[#121315]"
+  >
+    Title
+  </div>
+</section>

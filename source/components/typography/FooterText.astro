@@ -1,0 +1,27 @@
+---
+// Если понадобится интернализация текста футера
+
+// const footerText = {
+//   en: `Let's talk about work, design and its role in medicine`,
+//   ru: `Давайте поговорим о работе, дизайне и его роли в медицине`,
+// };
+
+// const locale = Astro.currentLocale ?? "en"; // Если undefined, то по дефолту будет 'en'
+
+// Использую backticks (\``) для гибкой настройки переносов
+// (+ надо добавить св-во whitespace-pre-wrap в соответствующем теге)
+const footerText = 
+`Let's talk about work, design and its role 
+in medicine`;
+---
+
+<section
+  class="col-span-3 col-start-1 text-[44px] font-normal text-white whitespace-pre-wrap"
+>{footerText}</section>
+
+<img
+  src="/icons/footer-icon.svg"
+  alt="Footer icon"
+  class="col-span-1 col-start-10 justify-self-center h-[42px] w-[63px]"
+  loading={"lazy"}
+/>
