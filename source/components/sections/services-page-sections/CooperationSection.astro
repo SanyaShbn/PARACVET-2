@@ -17,11 +17,16 @@ const linkText = {
   ru: "Как это работает",
 };
 
+const capabilitiesSectionTitle = {
+  en: "Our Capabilities",
+  ru: "Наши возможности",
+};
+
 const locale = Astro.currentLocale ?? "en";
 ---
 
 <section
-  class="col-span-10 grid min-h-[200vh] grid-cols-10 grid-rows-[auto,1fr] pt-32"
+  class="col-span-10 grid min-h-[200vh] grid-cols-10 grid-rows-[auto,1fr] pt-36"
 >
   <div
     class="col-span-10 grid grid-cols-10 border-t border-[rgba(0,0,0,0.2)] px-12 pt-32"
@@ -47,16 +52,16 @@ const locale = Astro.currentLocale ?? "en";
   </div>
 
   <div
-    class="relative col-span-10 mt-[10vh] grid h-[658px] grid-cols-10 gap-x-[6px] px-[12px]"
+    class="relative col-span-10 mt-[10vh] grid h-[75%] grid-cols-10 gap-x-[6px] px-[12px]"
   >
     <ServicesPageRectangleCard
-      css="col-start-1 col-span-4 h-[435px] grid grid-cols-4"
+      css="col-start-1 col-span-4 h-[65%] grid grid-cols-4"
       src="/icons/placeholder-icons/placeholder-A-icon.svg"
       cardTitleText={cardTitleArray[0]}
       cardDescriptionText={cardDescriptionArray[0]}
     />
     <ServicesPageRectangleCard
-      css="col-start-5 col-span-6 h-[658px] grid grid-cols-6"
+      css="col-start-5 col-span-6 grid grid-cols-6"
       src="/icons/placeholder-icons/placeholder-B-icon.svg"
       cardTitleText={cardTitleArray[1]}
       cardDescriptionText={cardDescriptionArray[1]}
@@ -66,18 +71,14 @@ const locale = Astro.currentLocale ?? "en";
       class="absolute bottom-0 col-span-4 flex items-center justify-between px-12 text-[24px] font-medium leading-[160%] tracking-[-2.2%] text-[#121315]"
     >
       <span>{linkText[locale]}</span>
-      <img
-        src="/icons/arrow.svg"
-        alt="Arrow icon"
-        class="ml-[12px]"
-      />
+      <img src="/icons/arrow.svg" alt="Arrow icon" class="ml-[12px]" loading="lazy"/>
     </button>
   </div>
 
-  <div
-    class="col-span-4 col-start-1
-  text-[164px] font-medium leading-[124%] tracking-[-2%] text-[#121315]"
+  <section
+    class="col-span-8 col-start-1 px-12 mb-16 
+  text-[104px] font-golos leading-[109%] tracking-[-2.2%] text-[#121315]"
   >
-    Title
-  </div>
+    {capabilitiesSectionTitle[locale]}
+  </section>
 </section>
