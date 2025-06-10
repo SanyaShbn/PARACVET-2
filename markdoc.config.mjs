@@ -27,7 +27,7 @@ export default defineMarkdocConfig({
       },
     },
     h1: {
-      render: component('./source/components/typography/H1.astro'),
+      render: component('./source/components/typography/h1.astro'),
       attributes: {
         text: { type: String },
         
