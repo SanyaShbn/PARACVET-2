@@ -185,18 +185,20 @@ if (locale === "ru") {
       ],
     ];
 
-    burgerBtn.addEventListener("click", () => {
-      sidebar.classList.toggle("open");
-      console.log();
-      if (sidebar.classList.contains("open")) {
-        console.log("open");
-        timeline(sideBarAnimOpen, { direction: "normal" });
-        timeline(btnAnimOpen, { direction: "normal" });
-      } else {
-        console.log("close");
-        timeline(sideBarAnimClose, { direction: "normal" });
-        timeline(btnAnimClose, { direction: "normal" });
-      }
-    });
+    // Пока закомментил, ругалось на ошибку при деплое, полноценно с анимашками далее разберемся
+
+    // burgerBtn.addEventListener("click", () => {
+    //   sidebar.classList.toggle("open");
+    //   console.log();
+    //   if (sidebar.classList.contains("open")) {
+    //     console.log("open");
+    //     timeline(sideBarAnimOpen, { direction: "normal" });
+    //     timeline(btnAnimOpen, { direction: "normal" });
+    //   } else {
+    //     console.log("close");
+    //     timeline(sideBarAnimClose, { direction: "normal" });
+    //     timeline(btnAnimClose, { direction: "normal" });
+    //   }
+    // });
   });
 </script>

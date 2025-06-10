@@ -1,11 +1,11 @@
 ---
-import Socials from "../../data/Socials.yml";
+import socialsData  from "../../data/Socials.yml";
 const locale: string = Astro.currentLocale as string;
 const {css} = Astro.props;
 ---
 <div class:list={css}>
   <ul class="grid grid-cols-2 grid-rows-2 gap-x-[44px] gap-y-[26px]">
-    {Socials[locale].map((item, index) => (
+    {socialsData[locale].map((item, index) => (
       <li class:list={[
         index === 0 ? "justify-self-start" : "",   // Верхний левый угол
         index === 1 ? "justify-self-start" : "",   // Верхний правый угол
