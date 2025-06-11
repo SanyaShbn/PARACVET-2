@@ -1,0 +1,27 @@
+---
+import TestLayout from "../../layouts/TestLayout.astro";
+import { getEntry } from "astro:content";
+
+import { locales } from "../../utils/i18n.config";
+
+export function getStaticPaths() {
+  const paths = locales.map((locale) => {
+    return { params: { locale } };
+  });
+  return paths;
+}
+const locale = Astro.currentLocale;
+
+const slug = "test";
+const page = await getEntry("pages", `${locale}/${slug}`);
+
+if (!page) {
+  return Astro.redirect("/404");
+}
+
+const { Content } = await page.render();
+---
+
+<TestLayout title="Test">
+  <Content />
+</TestLayout>
