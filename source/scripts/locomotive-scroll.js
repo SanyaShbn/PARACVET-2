@@ -1,38 +1,27 @@
-import LocomotiveScroll from "locomotive-scroll";
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import LocomotiveScroll from 'locomotive-scroll';
 
-gsap.registerPlugin(ScrollTrigger);
+let scroll;
 
-document.addEventListener("DOMContentLoaded", () => {
-  const scrollEl = document.querySelector("#main-container");
+function initLocomotiveScroll() {
+    const scrollContainer = document.querySelector('[data-scroll-container]');
+    
+    if (!scrollContainer) {
+        return;
+    }
 
-  if (!scrollEl) return;
+    if (scroll) {
+        scroll.destroy();
+    }
 
-  const locoScroll = new LocomotiveScroll({
-    el: scrollEl,
-    smooth: true,
-    multiplier: 1,
-    class: "is-reveal",
-  });
+    scroll = new LocomotiveScroll({
+        el: scrollContainer,
+        smooth: true,
+        multiplier: 1,
+    });
+}
 
-  locoScroll.on("scroll", () => {
-    ScrollTrigger.update();
-  });
+document.addEventListener("DOMContentLoaded", initLocomotiveScroll);
 
-  ScrollTrigger.scrollerProxy(scrollEl, {
-    scrollTop(value) {
-      return arguments.length
-        ? locoScroll.scrollTo(value, 0, 0)
-        : locoScroll.scroll.instance.scroll.y;
-    },
-    scrollLeft(value) {
-      return arguments.length
-        ? locoScroll.scrollTo(value, 0, 0)
-        : locoScroll.scroll.instance.scroll.x;
-    },
-  });
-
-  ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
-  ScrollTrigger.refresh();
+document.addEventListener("astro:page-load", () => {
+    initLocomotiveScroll();
 });

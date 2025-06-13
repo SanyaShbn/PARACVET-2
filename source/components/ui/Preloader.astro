@@ -1,0 +1,28 @@
+---
+import Logo from "./Logo.astro";
+---
+
+<div id="preloader" class="loader-wrapper loader-absolute">
+  <Logo />
+</div>
+<style>
+  .loader-absolute {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: black;
+    z-index: 1;
+  }
+
+  .loader-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: all 0.25s ease-in-out;
+    background-color: #dbd8d6;
+    color: #dbd8d6;
+  }
+</style>

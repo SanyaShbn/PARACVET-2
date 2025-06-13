@@ -1,9 +1,8 @@
 ---
 import type { GetStaticPaths } from "astro";
 import { locales } from "../utils/i18n.config";
-
-import { ViewTransitions } from "astro:transitions";
 import Logo from "../components/ui/Logo.astro";
+import "../css/locomotive-scroll.css";
 
 export const getStaticPaths = (() => {
   return locales.map((locale) => {
@@ -26,45 +25,41 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
-
-    <ViewTransitions />
   </head>
-  <body class="bg-white">
+  <body>
     <!-- Preloader -->
-    <div
-      id="preloader"
-      class="loader-wrapper absolute"
-    >
+    <div id="preloader" class="loader-wrapper absolute">
       <Logo />
     </div>
 
-    <div id="main-container">
-      <main class="grid grid-flow-row auto-rows-max grid-cols-10 gap-x-[6px]">
-        <slot />
-      </main>
+    <div class="text-white" data-scroll-container>
+      <section class="h-[100vh] p-[10em] bg-[#000fff]" data-scroll-section>
+        <h1>Hey</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </section>
+      <section class="h-[100vh] p-[10em] bg-black" data-scroll-section>
+        <h1>You should subscribe</h1>
+        <p data-scroll-class="test-scroll-class" data-scroll data-scroll-speed="2" class="custom-p" data-scroll-repeat="true">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </section>
     </div>
+
+    <!-- <main id="main-container" class="grid grid-flow-row auto-rows-max grid-cols-10 gap-x-[6px]" data-scroll-container>
+      <slot />
+    </main> -->
 
     <script src="../scripts/locomotive-scroll.js"></script>
     <script src="../scripts/preloader.js"></script>
     <style is:global>
-      /* srolbar styling */
-      body::-webkit-scrollbar {
-        width: 0.3em;
-      }
-      body::-webkit-scrollbar {
-        background-color: rgba(0, 0, 0, 0.1);
+      .custom-p {
+        opacity: 0;
+        transition: opacity 6s;
       }
 
-      body::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.1);
+      .test-scroll-class {
+        opacity: 1;
       }
-
-      body::-webkit-scrollbar-thumb {
-        background-color: rgba(3, 3, 3, 0.7);
-        outline: none;
-        height: 5em;
-      }
-
       /* preloader styling */
       .absolute {
         position: fixed;

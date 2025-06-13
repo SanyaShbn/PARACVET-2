@@ -6,6 +6,8 @@ import Header from "../components/ui/Header.astro";
 import Footer from "../components/ui/Footer.astro";
 import SideMenu from "../components/ui/SideMenu.astro";
 import { ViewTransitions } from "astro:transitions";
+import "../css/locomotive-scroll.css";
+import Preloader from "../components/ui/Preloader.astro";
 
 export const getStaticPaths = (() => {
   return locales.map((locale) => {
@@ -33,19 +35,24 @@ const { title } = Astro.props;
     <ViewTransitions />
   </head>
   <!-- <body class="bg-slate-200"> -->
-  <body class="bg-white"> 
+  <body class="bg-white">
+    <Preloader />
 
-    <!-- <SideMenu /> -->
+    <div data-scroll-container>
+      <Header />
 
-    <Header />
+      <main class="grid grid-flow-row auto-rows-max grid-cols-10 gap-x-[6px]">
+        <slot />
+      </main>
 
-    <main class="grid grid-flow-row auto-rows-max grid-cols-10 gap-x-[6px]">
-      <slot />
-    </main>
+      <Footer />
+    </div>
 
-    <Footer />
-
-    <script src="../scripts/global.js"></script>
+    <!-- <script src="../scripts/global.js"></script> -->
+    <script>
+      import "../scripts/locomotive-scroll.js";
+      import "../scripts/preloader.js";
+    </script>
     <style is:global>
       /* Tilewinds settings	 */
       @tailwind base;
@@ -58,7 +65,8 @@ const { title } = Astro.props;
           font-style: normal;
           font-weight: 400;
           font-display: swap;
-          src: url(../../public/fonts/Manrope/Manrope-Regular.ttf) format("woff2");
+          src: url(../../public/fonts/Manrope/Manrope-Regular.ttf)
+            format("woff2");
         }
         @font-face {
           font-family: "Manrope";
@@ -72,7 +80,8 @@ const { title } = Astro.props;
           font-style: medium;
           font-weight: 600;
           font-display: swap;
-          src: url(../../public/fonts/Manrope/Manrope-Medium.ttf) format("woff2")
+          src: url(../../public/fonts/Manrope/Manrope-Medium.ttf)
+            format("woff2");
         }
         @font-face {
           font-family: "Golos Text";
@@ -87,52 +96,9 @@ const { title } = Astro.props;
         font-family: "Golos Text", sans-serif;
       }
 
-      /* locomotive scroll */
-      html.lenis {
-        height: auto;
-      }
-
-      .lenis.lenis-smooth {
-        scroll-behavior: auto;
-      }
-
-      .lenis.lenis-smooth [data-lenis-prevent] {
-        overscroll-behavior: contain;
-      }
-
-      .lenis.lenis-stopped {
-        overflow: hidden;
-      }
-
-      .lenis.lenis-scrolling iframe {
-        pointer-events: none;
-      }
-
-      .wrapper {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        width: 100%;
-        min-height: 100vh;
-      }
-
-      /* srolbar styling */
-      body::-webkit-scrollbar {
-        width: 0.3em;
-      }
-      body::-webkit-scrollbar {
-        background-color: rgba(0, 0, 0, 0.1);
-      }
-
-      body::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.1);
-        /* background-color:  rgba(0, 0, 0, 0.2); */
-      }
-
-      body::-webkit-scrollbar-thumb {
-        background-color: rgba(3, 3, 3, 0.7);
-        outline: none;
-        height: 5em;
+      /* Скрываю дефолтный скролл браузера */
+      ::-webkit-scrollbar {
+        display: none;
       }
     </style>
   </body>
