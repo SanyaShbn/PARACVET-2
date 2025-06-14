@@ -38,15 +38,13 @@ const { title } = Astro.props;
   <body class="bg-white">
     <Preloader />
 
-    <div data-scroll-container>
-      <Header />
+    <Header />
 
-      <main class="grid grid-flow-row auto-rows-max grid-cols-10 gap-x-[6px]">
-        <slot />
-      </main>
+    <main class="grid grid-flow-row auto-rows-max grid-cols-10 gap-x-[6px]">
+      <slot />
+    </main>
 
-      <Footer />
-    </div>
+    <Footer />
 
     <!-- <script src="../scripts/global.js"></script> -->
     <script>
@@ -94,11 +92,6 @@ const { title } = Astro.props;
 
       .font-golos {
         font-family: "Golos Text", sans-serif;
-      }
-
-      /* Скрываю дефолтный скролл браузера */
-      ::-webkit-scrollbar {
-        display: none;
       }
     </style>
   </body>
