@@ -26,18 +26,17 @@ export default defineMarkdocConfig({
         
       },
     },
-    h1: {
-      render: component('./source/components/typography/h1.astro'),
+    pageTitleH1: {
+      render: component('./source/components/typography/PageTitleH1.astro'),
       attributes: {
         text: { type: String },
         
       },
     },
-    subheading: {
-      render: component('./source/components/typography/Subheading.astro'),
+    pageSubtitleH3: {
+      render: component('./source/components/typography/PageSubtitleH3.astro'),
       attributes: {
-        regular: { type: String },
-        highlighted: { type: Array[String] }
+        subtitleContent: { type: String },
       },
     },
 
