@@ -1,4 +1,4 @@
-import { defineMarkdocConfig, nodes, component } from '@astrojs/markdoc/config';
+import { defineMarkdocConfig, nodes, component } from "@astrojs/markdoc/config";
 
 export default defineMarkdocConfig({
   nodes: {
@@ -11,63 +11,62 @@ export default defineMarkdocConfig({
     //   render: null, // default 'p'
     // }
   },
-  
+
   tags: {
     textbox: {
-      render: component('./source/components/sections/TextXXLCenter.astro'),
+      render: component("./source/components/sections/TextXXLCenter.astro"),
       attributes: {
         title: { type: String },
       },
     },
     simple: {
-      render: component('./source/components/sections/simple.astro'),
+      render: component("./source/components/sections/simple.astro"),
       attributes: {
         text: { type: String },
-        
       },
     },
-    pageTitleH1: {
-      render: component('./source/components/typography/PageTitleH1.astro'),
+    pageHeroSection: {
+      render: component("./source/components/sections/PageHeroSection.astro"),
       attributes: {
-        text: { type: String },
-        
-      },
-    },
-    pageSubtitleH3: {
-      render: component('./source/components/typography/PageSubtitleH3.astro'),
-      attributes: {
-        subtitleContent: { type: String },
+        title: { type: String },
+        subtitleContent: { type: String }
       },
     },
 
     //  Теги для странички "Услуги"
     cooperationSection: {
-      render: component('./source/components/sections/services-page-sections/CooperationSection.astro'),
+      render: component(
+        "./source/components/sections/services-page-sections/CooperationSection.astro",
+      ),
       attributes: {
         pageTitle: { type: String },
         cooperationApproachTitle: { type: String },
         cooperationApproachDescription: { type: String },
         cardTitleArray: { type: Array[String] },
-        cardDescriptionArray: { type: Array[String] }
+        cardDescriptionArray: { type: Array[String] },
       },
-      group: 'services-page'
+      group: "services-page",
     },
     capabilitySection: {
-      render: component('./source/components/sections/services-page-sections/CapabilitiesSection.astro'),
+      render: component(
+        "./source/components/sections/services-page-sections/CapabilitiesSection.astro",
+      ),
       attributes: {
         title: { type: String },
         category: { type: Array[String] },
         description: { type: Array[String] },
       },
-      group: 'services-page'
+      group: "services-page",
     },
     faqSection: {
-      render: component('./source/components/sections/services-page-sections/FaqSection.astro'),
+      render: component(
+        "./source/components/sections/services-page-sections/FaqSection.astro",
+      ),
       attributes: {
         title: { type: String },
         question: { type: Array[String] },
       },
-      group: 'services-page'
+      group: "services-page",
     },
   },
 });

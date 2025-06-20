@@ -1,0 +1,9 @@
+---
+import PageSubtitleH3 from "../typography/PageSubtitleH3.astro";
+import PageTitleH1 from "../typography/PageTitleH1.astro";
+
+const { title, subtitleContent } = Astro.props;
+---
+
+<PageTitleH1 title={title} />
+<PageSubtitleH3 subtitleContent={subtitleContent} />

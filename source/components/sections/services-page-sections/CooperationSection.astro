@@ -1,8 +1,7 @@
 ---
 import CooperationSectionTitle from "../../typography/services-page-typography/CooperationSectionTitle.astro";
-import CooperationApproachTitle from "../../typography/services-page-typography/CooperationApproachTitle.astro";
-import CooperationApproachDescription from "../../typography/services-page-typography/CooperationApproachDescription.astro";
 import ServicesPageRectangleCard from "../../ui/ServicesPageRectangleCard.astro";
+import FirstLevelTextBlock from "../FirstLevelTextBlock.astro";
 
 const {
   pageTitle,
@@ -37,16 +36,7 @@ const locale = Astro.currentLocale ?? "en";
 
     <div class="col-span-6 col-start-5 gap-x-[6px] justify-self-center">
       <div class="flex flex-col space-y-[12px]">
-        <CooperationApproachTitle
-          ><span
-            set:html={cooperationApproachTitle}
-          /></CooperationApproachTitle
-        >
-        <CooperationApproachDescription
-          ><span
-            set:html={cooperationApproachDescription}
-          /></CooperationApproachDescription
-        >
+          <FirstLevelTextBlock title={cooperationApproachTitle} description={cooperationApproachDescription}/>
       </div>
     </div>
   </div>

@@ -4,7 +4,7 @@ import { locales } from "../utils/i18n.config";
 
 import Header from "../components/ui/Header.astro";
 import Footer from "../components/ui/Footer.astro";
-import SideMenu from "../components/ui/SideMenu.astro";
+// import SideMenu from "../components/ui/SideMenu.astro";
 import { ViewTransitions } from "astro:transitions";
 import "../css/locomotive-scroll.css";
 import Preloader from "../components/ui/Preloader.astro";
@@ -33,10 +33,14 @@ const { title } = Astro.props;
     <title>{title}</title>
 
     <ViewTransitions />
+    <script is:inline>
+      // Отключаем scroll-трекинг Astro, чтобы избежать IPC flooding
+      delete window.onscrollend;
+    </script>
   </head>
   <!-- <body class="bg-slate-200"> -->
   <body class="bg-white">
-    <Preloader />
+    <!-- <Preloader /> -->
 
     <Header />
 
@@ -47,8 +51,9 @@ const { title } = Astro.props;
     <Footer />
 
     <!-- <script src="../scripts/global.js"></script> -->
-    <script src="../scripts/locomotive-scroll.js"/>
-    <script src="../scripts/preloader.js"/>
+    <script src="../scripts/locomotive-scroll.js"></script>
+    <!-- <script src="../scripts/preloader.js"></script> -->
+    <script src="/scripts/page-reveal.js" defer is:inline></script>
     <style is:global>
       /* Tilewinds settings	 */
       @tailwind base;
@@ -61,8 +66,7 @@ const { title } = Astro.props;
           font-style: normal;
           font-weight: 400;
           font-display: swap;
-          src: url(/fonts/Manrope/Manrope-Regular.ttf)
-            format("woff2");
+          src: url(/fonts/Manrope/Manrope-Regular.ttf) format("woff2");
         }
         @font-face {
           font-family: "Manrope";
@@ -76,8 +80,7 @@ const { title } = Astro.props;
           font-style: medium;
           font-weight: 600;
           font-display: swap;
-          src: url(/fonts/Manrope/Manrope-Medium.ttf)
-            format("woff2");
+          src: url(/fonts/Manrope/Manrope-Medium.ttf) format("woff2");
         }
         @font-face {
           font-family: "Golos Text";
