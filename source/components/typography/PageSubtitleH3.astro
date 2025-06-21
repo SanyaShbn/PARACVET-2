@@ -3,10 +3,9 @@ const { subtitleContent } = Astro.props;
 ---
 
 <h3
-  class="animated-text col-span-8 col-start-1 px-12 pt-[19px] text-[64px] font-medium leading-[130%] text-[#121315]"
->
-  {subtitleContent}
-</h3>
+  class="animated-text col-span-10 col-start-1 px-12 pt-[19px] text-[64px] font-medium leading-[130%] text-[#121315]"
+  set:html={subtitleContent}
+/>
 
 <script>
   import { animateSplitText } from "../../scripts/split-text.js";
