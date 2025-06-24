@@ -29,7 +29,18 @@ export default defineMarkdocConfig({
       render: component("./source/components/sections/PageHeroSection.astro"),
       attributes: {
         title: { type: String },
-        subtitleContent: { type: String }
+        subtitleContent: { type: String },
+      },
+    },
+    explainerSection: {
+      render: component("./source/components/sections/ExplainerSection.astro"),
+      attributes: {
+        id: { type: String },
+        title: { type: String, required: true },
+        description: { type: String },
+        stageResultItems: { type: Array[String] },
+        categoryArray: { type: Array[String] },
+        categoryDescriptionArray: { type: Array[String] },
       },
     },
 
@@ -47,17 +58,6 @@ export default defineMarkdocConfig({
       },
       group: "services-page",
     },
-    capabilitySection: {
-      render: component(
-        "./source/components/sections/services-page-sections/CapabilitiesSection.astro",
-      ),
-      attributes: {
-        title: { type: String },
-        category: { type: Array[String] },
-        description: { type: Array[String] },
-      },
-      group: "services-page",
-    },
     faqSection: {
       render: component(
         "./source/components/sections/services-page-sections/FaqSection.astro",
@@ -67,6 +67,20 @@ export default defineMarkdocConfig({
         question: { type: Array[String] },
       },
       group: "services-page",
+    },
+
+    //  Теги для странички "О компании"
+    experienceSection: {
+      render: component(
+        "./source/components/sections/about-page-sections/ExperienceSection.astro",
+      ),
+      attributes: {
+        experienceTitle: { type: String },
+        experienceDescription: { type: String },
+        experienceValues: { type: Array[String] },
+        experienceValuesExplanation: { type: Array[String] },
+      },
+      group: "about-page",
     },
   },
 });

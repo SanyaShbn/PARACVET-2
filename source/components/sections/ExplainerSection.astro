@@ -1,0 +1,93 @@
+---
+// Здесь использую интерфейс, вообще так чище и правильнее вроде (в остальных компонентах особо не использую).
+// Дальше и в остальных компонентах можно определить, когда обсудим, верно ли я их вообще выделил, может что изменим.
+// Поэтому уже написанное в коде остальных компонентов пока не трогаю
+export interface Props {
+  // общие пропсы
+  id?: string;
+  title: string;
+
+  // пропсы, если верстаем страницу "Методология" и используем там этот компонент
+  description?: string;
+  stageResultItems?: string[];
+
+  // пропсы, если верстаем страницу "Услуги" и используем там этот компонент
+  categoryArray?: string[];
+  categoryDescriptionArray?: string[];
+}
+
+import ExplainerSectionTitleH3 from "../typography/ExplainerSectionTitleH3.astro";
+import CapabilityCategory from "../typography/services-page-typography/CapabilityCategory.astro";
+import CapabilityDescription from "../typography/services-page-typography/CapabilityDescription.astro";
+
+const {
+  id,
+  title,
+  description,
+  stageResultItems = [],
+  categoryArray = [],
+  categoryDescriptionArray = [],
+} = Astro.props;
+
+const itemsListTitle = {
+  en: "Stage results:",
+  ru: "Результаты этапа:",
+};
+
+const locale = Astro.currentLocale ?? "en";
+---
+
+<!-- Компонент общей пояснительной секции (поэтому пока дал название ExplainerSection). Выделил данную секцию из страниц "Услуги"
+ и "Методология" (страницы, располагающиеся после заголовков "Наши возможности" и "Основной воркфлоу" соответственно) -->
+<section
+  id={id}
+  class={`${
+    description ? "border-[#000000] mx-12" : "border-[rgba(0,0,0,0.2)] px-12"
+  } grid-base col-span-10 h-auto border-t pb-[90px] pt-[42px]`}
+>
+  <div class="col-span-3">
+    <ExplainerSectionTitleH3>{title}</ExplainerSectionTitleH3>
+  </div>
+
+  {
+    description && (
+      <div class="col-span-3 col-start-6 gap-x-[6px] pt-[10px]">
+        <p
+          class={`${
+            stageResultItems.length > 0 ? "mb-0" : "mb-[100px]"
+          } mt-[40px] font-normal leading-[150%] tracking-[-2.2%] opacity-80`}
+        >
+          {description}
+        </p>
+
+        {stageResultItems.length > 0 && (
+          <div class="mt-[75px]">
+            <p class="font-inter leading-[150%] tracking-[-1.1%] text-[#1E1E1E]">
+              {itemsListTitle[locale]}
+            </p>
+            <ul class="mt-[40px] list-disc space-y-1 pl-[25px] font-normal leading-[150%] tracking-[-2.2%] opacity-80">
+              {stageResultItems.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    )
+  }
+
+  {
+    categoryArray.length > 0 && categoryDescriptionArray.length > 0 && (
+      <div class="col-span-5 col-start-5 gap-x-[6px] pt-[10px]">
+        {categoryArray.map((cat, index) => (
+          <div class="flex flex-col space-y-2 pb-[62px]">
+            <CapabilityCategory>{cat}</CapabilityCategory>
+            <CapabilityDescription>
+              {categoryDescriptionArray[index]}
+            </CapabilityDescription>
+          </div>
+        ))}
+      </div>
+    )
+  }
+</section>

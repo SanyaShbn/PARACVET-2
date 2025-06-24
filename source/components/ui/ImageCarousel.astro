@@ -1,0 +1,40 @@
+---
+import { Image } from "astro:assets";
+import staff from "../../data/Staff";
+
+const locale: string = Astro.currentLocale as string;
+
+// Сделал повторение массива сотрудников 3 раза для варианта реализации бесшовной прокрутки
+const repeatedStaff = [...staff[locale], ...staff[locale], ...staff[locale]];
+---
+
+<div class="relative col-span-10 overflow-hidden">
+  <div id="carousel-track" class="flex gap-[20px] will-change-transform">
+    {
+      repeatedStaff.map(({ name, info, photo }) => (
+        <div
+          class="flex flex-col items-start w-[407px]"
+        >
+          <div class="h-[407px] w-[407px] overflow-hidden rounded-[12px]">
+            <Image src={photo} alt={name} />
+          </div>
+          <div class="mt-4 pl-4 max-w-[300px] w-full text-[16px] leading-[150%] tracking-[-1.1%] text-[#1E1E1E] opacity-70">
+            <p class="font-medium">
+              {name}
+            </p>
+            <p class="font-normal">
+              {info}
+            </p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <script>
+    import { initCarousel } from "../../scripts/carousel.js";
+    document.addEventListener("astro:page-load", () => {
+      initCarousel();
+    });
+  </script>
+</div>
