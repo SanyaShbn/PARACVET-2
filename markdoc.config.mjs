@@ -82,5 +82,13 @@ export default defineMarkdocConfig({
       },
       group: "about-page",
     },
+
+    //  Теги для странички "Методология"
+    methodologyDiagramSection: {
+      render: component(
+        "./source/components/sections/method-page-sections/MethodologyDiagramSection.astro",
+      ),
+      group: "method-page",
+    },
   },
 });

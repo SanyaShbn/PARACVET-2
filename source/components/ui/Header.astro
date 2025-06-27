@@ -4,7 +4,9 @@ import Navigation from "../ui/Navigation.astro";
 import Logo from "./Logo.astro";
 ---
 
-<header class="grid-base h-[188px] w-full content-center px-[12px]">
+<!-- Вариант с grid -->
+
+<!-- <header class="grid-base h-[188px] w-full content-center px-[12px]">
   <Logo css="col-start-1 w-[168px] h-[28px]" />
    <div class="col-start-5 w-fit text-[18px] font-normal text-neutral-950 justify-self-end font-golos opacity-80">
     <a href="/contact" class="inline-block border-b-[2px] border-black">
@@ -13,4 +15,26 @@ import Logo from "./Logo.astro";
   </div>
   <LangTumbler css="col-start-8 col-span-1 justify-self-center" />
   <Navigation css="col-start-10 col-span-6 flex flex-col items-end" />
+</header> -->
+
+<!-- Вариант просто с флексами -->
+<header
+  class="flex w-full items-start justify-between px-[12px] pb-0 pt-[12px]"
+>
+  <Logo css="w-[12%] h-[28px]" />
+  <div class="flex w-[60%] shrink-0 items-start justify-end gap-[41%]">
+    <a
+      href="/contact"
+      class="font-golos relative inline-block text-[18px] font-normal text-neutral-950 opacity-80
+         before:absolute before:bottom-0 before:left-0 before:h-[2px] before:w-0
+         before:bg-black before:transition-all before:duration-300
+         hover:before:w-full"
+    >
+      Lets Talk
+    </a>
+    <LangTumbler />
+  </div>
+  <Navigation
+    css="flex flex-col w-[16%] px-0 pt-[4px] pb-[10px] items-end shrink-0"
+  />
 </header>

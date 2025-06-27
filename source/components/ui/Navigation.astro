@@ -12,16 +12,19 @@ const { css } = Astro.props;
   <ul class="w-full space-y-[14px] text-right">
     {
       Object.entries(navigation[locale]).map(([item, name]) => (
-       <li class="text-sm uppercase relative">
-        <a href={`/${locale}/${item}/`} 
-           class:list={[
-             PageSlug === (item + "/") || PageSlug === name + "/" 
-             ? ["font-bold", "text-neutral-950", "border-b-[2px] border-black w-fit opacity-80"]
-             : ""
-           ]}>
-          {name}
-        </a>
-      </li>
+        <li class="relative text-sm uppercase ">
+          <a
+            href={`/${locale}/${item}/`}
+            class:list={[
+              "relative inline-block",
+              PageSlug === item + "/" || PageSlug === name + "/"
+                ? ["font-bold", "text-neutral-950", "border-b-[2px] border-black w-fit opacity-80"]
+                : "before:absolute before:bottom-0 before:right-0 before:h-[2px] before:w-0 before:bg-[#121315] before:transition-all before:duration-300 hover:before:w-full",
+            ]}
+          >
+            {name}
+          </a>
+        </li>
       ))
     }
   </ul>

@@ -1,11 +1,12 @@
 ---
-import FooterText from "../typography/FooterText.astro";
 import Socials from "./Socials.astro";
 import Contacts from "./Contacts.astro";
 import CopyrightText from "../typography/CopyrightText.astro";
 ---
 
-<footer class="mb-[15px] pt-[200px] pb-[48px] pl-[48px] pr-[12px] bg-[#121315]">
+<!-- Вариант с grid -->
+ 
+<!-- <footer class="mb-[15px] pt-[200px] pb-[48px] pl-[48px] pr-[12px] bg-[#121315]">
   <div class="grid-base mx-[12px] gap-y-[47px]">
     <FooterText/>
 
@@ -16,6 +17,37 @@ import CopyrightText from "../typography/CopyrightText.astro";
       <Contacts css="col-span-2 col-start-5"/>
       <Socials css="col-span-2 col-start-7 flex items-center justify-self-center"/>
       <CopyrightText css="col-span-1 col-start-10 flex items-end justify-self-end"/>
+    </div>
+  </div>
+</footer> -->
+
+<!-- Вариант просто с флексами -->
+<footer
+  class="flex w-full flex-col items-start gap-[47px] bg-[#121315] pb-[48px] pl-[48px] pr-[12px] pt-[200px]"
+>
+  <div class="flex items-start justify-between self-stretch pr-[36px]">
+    <p class="w-[37%] text-[44px] font-normal text-white">
+      Let's talk about work, design and its role in medicine
+    </p>
+    <img
+      src="/icons/footer-icon.svg"
+      alt="Footer icon"
+      class="h-[23%] w-[5%]"
+      loading={"lazy"}
+    />
+  </div>
+  <div class="flex items-end justify-between self-stretch pr-[3px]">
+    <button>
+      <img
+        src="/icons/footer-nav-icon.svg"
+        alt="Footer nav icon"
+        loading="lazy"
+      />
+    </button>
+    <div class="flex w-[60%] items-center gap-[84px] self-stretch relative">
+      <Contacts css="flex flex-col w-[25%] items-start gap-[19px] shrink-0" />
+      <Socials css="flex w-[52%] items-start gap-[44px] flex-[1_0_0]" />
+      <CopyrightText css="absolute right-[-4%]" />
     </div>
   </div>
 </footer>

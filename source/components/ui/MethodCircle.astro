@@ -1,0 +1,18 @@
+---
+const { label, labelPosition = "" } = Astro.props;
+---
+
+<div class="relative h-[604px] w-[604px] shrink-0 overflow-hidden rounded-full">
+  <div class="absolute inset-0 z-0 rounded-full bg-[#D9D9D9] opacity-40"></div>
+  <p
+    class={`relative z-10 text-[36px] font-normal leading-[150%] tracking-[-0.792px] text-black ${labelPosition}`}
+  >
+    {
+      Array.isArray(label) ? (
+        label.map((word) => <span class="block">{word}</span>)
+      ) : (
+        <span>{label}</span>
+      )
+    }
+  </p>
+</div>

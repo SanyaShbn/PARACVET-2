@@ -1,4 +1,5 @@
 ---
+import SectionTitleH2 from "../../typography/SectionTitleH2.astro";
 import CooperationSectionTitle from "../../typography/services-page-typography/CooperationSectionTitle.astro";
 import ServicesPageRectangleCard from "../../ui/ServicesPageRectangleCard.astro";
 import FirstLevelTextBlock from "../FirstLevelTextBlock.astro";
@@ -28,7 +29,7 @@ const locale = Astro.currentLocale ?? "en";
   class="col-span-10 grid min-h-[200vh] grid-cols-10 grid-rows-[auto,1fr] pt-36"
 >
   <div
-    class="col-span-10 grid-base border-t border-[rgba(0,0,0,0.2)] px-12 pt-32"
+    class="grid-base col-span-10 border-t border-[rgba(0,0,0,0.2)] px-12 pt-32"
   >
     <div class="col-span-2">
       <CooperationSectionTitle>{pageTitle}</CooperationSectionTitle>
@@ -36,7 +37,10 @@ const locale = Astro.currentLocale ?? "en";
 
     <div class="col-span-6 col-start-5 gap-x-[6px] justify-self-center">
       <div class="flex flex-col space-y-[12px]">
-          <FirstLevelTextBlock title={cooperationApproachTitle} description={cooperationApproachDescription}/>
+        <FirstLevelTextBlock
+          title={cooperationApproachTitle}
+          description={cooperationApproachDescription}
+        />
       </div>
     </div>
   </div>
@@ -61,14 +65,18 @@ const locale = Astro.currentLocale ?? "en";
       class="absolute bottom-0 col-span-4 flex items-center justify-between px-12 text-[24px] font-medium leading-[160%] tracking-[-2.2%] text-[#121315]"
     >
       <span>{linkText[locale]}</span>
-      <img src="/icons/arrow.svg" alt="Arrow icon" class="ml-[12px]" loading="lazy"/>
+      <img
+        src="/icons/arrow.svg"
+        alt="Arrow icon"
+        class="ml-[12px]"
+        loading="lazy"
+      />
     </button>
   </div>
 
-  <section
-    class="col-span-8 col-start-1 px-12 mb-16 
-  text-[104px] font-golos leading-[109%] tracking-[-2.2%] text-[#121315]"
-  >
-    {capabilitiesSectionTitle[locale]}
-  </section>
+  <SectionTitleH2
+    title={capabilitiesSectionTitle[locale]}
+    css={`col-span-8 col-start-1 px-12 mb-16 
+  text-[104px] font-golos leading-[109%] tracking-[-2.2%] text-[#121315]`}
+  />
 </section>

@@ -43,9 +43,9 @@ const locale = Astro.currentLocale ?? "en";
   id={id}
   class={`${
     description ? "border-[#000000] mx-12" : "border-[rgba(0,0,0,0.2)] px-12"
-  } grid-base col-span-10 h-auto border-t pb-[90px] pt-[42px]`}
+  } grid-base col-span-10 h-auto border-t pb-[90px]`}
 >
-  <div class="col-span-3">
+  <div class="col-span-3 mt-[42px]">
     <ExplainerSectionTitleH3>{title}</ExplainerSectionTitleH3>
   </div>
 
@@ -54,8 +54,8 @@ const locale = Astro.currentLocale ?? "en";
       <div class="col-span-3 col-start-6 gap-x-[6px] pt-[10px]">
         <p
           class={`${
-            stageResultItems.length > 0 ? "mb-0" : "mb-[100px]"
-          } mt-[40px] font-normal leading-[150%] tracking-[-2.2%] opacity-80`}
+            stageResultItems.length > 0 ? "mb-0" : "mb-[215px]"
+          } mt-[75px] font-normal leading-[150%] tracking-[-2.2%] opacity-80`}
         >
           {description}
         </p>
@@ -65,7 +65,7 @@ const locale = Astro.currentLocale ?? "en";
             <p class="font-inter leading-[150%] tracking-[-1.1%] text-[#1E1E1E]">
               {itemsListTitle[locale]}
             </p>
-            <ul class="mt-[40px] list-disc space-y-1 pl-[25px] font-normal leading-[150%] tracking-[-2.2%] opacity-80">
+            <ul class="mt-[24px] list-disc space-y-1 pl-[25px] font-normal leading-[150%] tracking-[-2.2%] opacity-80">
               {stageResultItems.map((item) => (
                 <li>{item}</li>
               ))}
@@ -78,7 +78,7 @@ const locale = Astro.currentLocale ?? "en";
 
   {
     categoryArray.length > 0 && categoryDescriptionArray.length > 0 && (
-      <div class="col-span-5 col-start-5 gap-x-[6px] pt-[10px]">
+      <div class="col-span-5 col-start-5 mt-[54px] gap-x-[6px]">
         {categoryArray.map((cat, index) => (
           <div class="flex flex-col space-y-2 pb-[62px]">
             <CapabilityCategory>{cat}</CapabilityCategory>
