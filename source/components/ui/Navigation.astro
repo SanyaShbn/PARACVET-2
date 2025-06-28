@@ -16,10 +16,32 @@ const { css } = Astro.props;
           <a
             href={`/${locale}/${item}/`}
             class:list={[
-              "relative inline-block",
+              "relative inline-block transition-[font-weight] duration-300",
               PageSlug === item + "/" || PageSlug === name + "/"
-                ? ["font-bold", "text-neutral-950", "border-b-[2px] border-black w-fit opacity-80"]
-                : "before:absolute before:bottom-0 before:right-0 before:h-[2px] before:w-0 before:bg-[#121315] before:transition-all before:duration-300 hover:before:w-full",
+                ? [
+                    "font-bold",
+                    "text-neutral-950",
+                    "w-fit",
+                    "border-b-[2px]",
+                    "border-black",
+                    "opacity-80",
+                  ]
+                : [
+                    "before:absolute",
+                    "before:bottom-0",
+                    "before:right-0",
+                    "before:h-[2px]",
+                    "before:w-0",
+                    "before:bg-[#121315]",
+                    "before:transition-all",
+                    "before:duration-300",
+                    "hover:before:w-full",
+                    "hover:before:right-0",
+                    "hover:before:left-auto",
+                    "hover:font-bold",
+                    "hover:text-neutral-950",
+                    "hover:opacity-80",
+                  ],
             ]}
           >
             {name}

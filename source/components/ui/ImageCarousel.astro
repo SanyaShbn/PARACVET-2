@@ -8,7 +8,7 @@ const locale: string = Astro.currentLocale as string;
 const repeatedStaff = [...staff[locale], ...staff[locale], ...staff[locale]];
 ---
 
-<div class="relative col-span-10 overflow-hidden">
+<div class="overflow-hidden">
   <div id="carousel-track" class="flex gap-[20px] will-change-transform">
     {
       repeatedStaff.map(({ name, info, photo }) => (

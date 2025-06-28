@@ -3,7 +3,9 @@ const { subtitleContent } = Astro.props;
 ---
 
 <h3
-  class="animated-text col-span-10 col-start-1 px-12 pt-[19px] text-[64px] font-medium leading-[130%] text-[#121315]"
+  class="animated-text col-span-10 col-start-1 px-12 pt-[19px]
+         text-[32px] font-medium leading-[130%] text-[#121315]
+         sm:text-[44px] md:text-[54px] lg:text-[64px]"
   set:html={subtitleContent}
 />
 

@@ -1,13 +1,21 @@
 ---
-const { title, description } = Astro.props;
+const { title = undefined, description = undefined } = Astro.props;
 ---
 
-<h2
-  class="text-[48px] font-medium leading-[130%] tracking-[-2.2%] text-[#121315]"
-  set:html={title}
-/>
+{
+  title && (
+    <h2
+      class="text-[48px] font-medium leading-[130%] tracking-[-2.2%] text-[#121315]"
+      set:html={title}
+    />
+  )
+}
 
-<p
-  class="text-[24px] font-medium leading-[160%] text-[#000000] opacity-80"
-  set:html={description}
-/>
+{
+  description && (
+    <p
+      class="text-[24px] font-medium leading-[160%] text-[#000000] opacity-80"
+      set:html={description}
+    />
+  )
+}

@@ -3,6 +3,7 @@ const { title, css } = Astro.props;
 ---
 
 <h2
-  class={css}
+  class={css +
+    ` text-[36px] sm:text-[52px] md:text-[66px] lg:text-[78px] font-normal leading-[150%] tracking-[-2.2%] text-[rgba(0,0,0,0.80)]`}
   set:html={title}
 />
